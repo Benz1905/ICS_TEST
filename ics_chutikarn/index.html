@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>index</title>
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="container pt-3">
+            <div class="d-flex justify-content-end" >
+                <svg class="mx-2 mt-1" width="19" height="24" viewBox="0 0 19 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path  d="M15.9706 16.4705V16.6776L16.117 16.824L18.3235 19.0305V19.4999H0.5V19.0305L2.70649 16.824L2.85294 16.6776V16.4705V10.5881C2.85294 7.13898 4.66278 4.37376 7.76233 3.63937L8.14706 3.54822V3.15284V2.35284C8.14706 1.65251 8.71144 1.08813 9.41177 1.08813C10.1121 1.08813 10.6765 1.65251 10.6765 2.35284V3.15284V3.5479L11.0608 3.63928C14.1493 4.3736 15.9706 7.15119 15.9706 10.5881V16.4705ZM11.1955 21.6764C10.9756 22.4541 10.2567 23.0293 9.41177 23.0293C8.55819 23.0293 7.84473 22.4549 7.6271 21.6764H11.1955Z" fill="white" stroke="white"/>
+                </svg>
+                <div class="picturephoto mx-2">
+                    <img src="img/profile.png" alt="">
+                </div>
+                <p class="nameprofile mx-2 mt-1 text-light">
+                    Akkarapol
+                </p>
+            </div>
+            <div class="d-flex flex-row-reverse">
+                
+              </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4 sticky-top place_search">
+        <div class="row">
+            <div class="col-6">
+                <p class="topic">Place List</p>
+            </div>
+            <div class="col-6">
+                <div class="row" >
+                    <div class="col-3">
+                        <div class="btn-group float-start mx-2">
+                            <button class="btn btn-secondary dropdown-toggle rounded-pill h-25" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" style="border: 1px solid #134B8A !important; background: #ffffff; color: rgba(0, 0, 0, 0.54);">
+                                Restaurant
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                                <li><a class="dropdown-item" href="#">Restaurant</a></li>
+                                <li><a class="dropdown-item" href="#">Bakery</a></li>
+                                <li><a class="dropdown-item" href="#">Cafe</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="line float-start m-2"></div>
+                    </div>
+                    <div class="col-8">
+                        <div class="searchBar" type="text" name="search"  placeholder="search">
+                            <input id="searchQueryInput" name="search"  placeholder="Search name..." value="" />
+                            
+                            <button id="searchQuerySubmit" type="submit" name="searchQuerySubmit">
+                                <svg style="width:24px;height:24px"><path fill="#666666" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                                </svg>
+                              </button>
+                        </div>
+                        
+                    </div>
+                    <!-- <input type="text" name="search" id="search" placeholder="search" class="form-control"> -->
+                    <!-- <ul class="list-group" id="result"></ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container mt-4">
+        
+        <div class="row" id="cred-res">
+            
+                <script>
+                    $.get('./example_data.json',function(data,status){
+                        console.log(data);
+                        data.forEach(function(dt){
+                                $("#cred-res").append(
+                                    '<div class="col-4" >'+
+                                        '<div class="card m-4">'+
+                                            '<div class="card-body">'+
+                                                '<img src="'+dt.profile_image_url+'" class="float-start me-3 img-size" height="60px" width="60px">'+
+                                                '<h5 class="card-title">'+dt.name+'</h5>'+
+                                                '<p class="card-text float-start"> <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+                                                '<path d="M5.83334 9.16675H7.50001V10.8334H5.83334V9.16675ZM5.83334 12.5001H7.50001V14.1667H5.83334V12.5001ZM9.16668 9.16675H10.8333V10.8334H9.16668V9.16675ZM9.16668 12.5001H10.8333V14.1667H9.16668V12.5001ZM12.5 9.16675H14.1667V10.8334H12.5V9.16675ZM12.5 12.5001H14.1667V14.1667H12.5V12.5001Z" fill="black"/>'+
+                                                '</svg>'+dt.operation_time[0].time_open+'AM  '+dt.operation_time[0].time_close+'PM'+'</p>'+
+                                                '<p class="card-text float-end " style="color:#134B8A"> <svg class="mx-2" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+                                                '<circle cx="5.5" cy="5.5" r="5.5" fill="#134B8A"/ >'+
+                                                '</svg >'+dt.rating+'</p>'+
+                                            '</div>'+
+                                            '<div class=" d-flex justify-content-center p-3">'+
+                                                '<img class="img-size" src="'+dt.images[0]+'" alt="" width="33.3%" height="120px" style="border-radius:10px 0px 0px 10px">'+
+                                                '<img class="img-size" src="'+dt.images[1]+'" alt="" width="33.3%" height="120px">'+
+                                                '<img class="img-size" src="'+dt.images[2]+'" alt="" width="33.3%" height="120px" style="border-radius:0px 10px 10px 0px">'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'
+                                );
+                            });
+                    });
+
+                    
+                    $(document).ready(function(){
+                        $('#searchQueryInput').keyup(function(){
+                            $('#result').html('');
+                            var serchField = $('#searchQueryInput').val();
+                            var expraession = new RegExp(serchField, "i");
+                            $.getJSON('example_data.json',function (data){
+                                $.each(data,function(key,dt){
+                                    $('#cred-res').hide();
+                                    if(dt.name.search(expraession) > -1 || dt.name.search(
+                                        expraession)> -1){
+                                            $('#result').append(
+                                                '<div class="col-4" >'+
+                                                    '<div class="card m-4">'+
+                                                        '<div class="card-body">'+
+                                                            '<img src="'+dt.profile_image_url+'" class="float-start me-3 img-size" height="60px" width="60px">'+
+                                                            '<h5 class="card-title">'+dt.name+'</h5>'+
+                                                            '<p class="card-text float-start"> <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+                                                            '<path d="M5.83334 9.16675H7.50001V10.8334H5.83334V9.16675ZM5.83334 12.5001H7.50001V14.1667H5.83334V12.5001ZM9.16668 9.16675H10.8333V10.8334H9.16668V9.16675ZM9.16668 12.5001H10.8333V14.1667H9.16668V12.5001ZM12.5 9.16675H14.1667V10.8334H12.5V9.16675ZM12.5 12.5001H14.1667V14.1667H12.5V12.5001Z" fill="black"/>'+
+                                                            '</svg>'+dt.operation_time[0].time_open+'AM  '+dt.operation_time[0].time_close+'PM'+'</p>'+
+                                                            '<p class="card-text float-end " style="color:#134B8A"> <svg class="mx-2" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+                                                            '<circle cx="5.5" cy="5.5" r="5.5" fill="#134B8A"/ >'+
+                                                            '</svg >'+dt.rating+'</p>'+
+                                                        '</div>'+
+                                                        '<div class=" d-flex justify-content-center p-3">'+
+                                                            '<img class="img-size" src="'+dt.images[0]+'" alt="" width="33.3%" height="120px" style="border-radius:10px 0px 0px 10px">'+
+                                                            '<img class="img-size" src="'+dt.images[1]+'" alt="" width="33.3%" height="120px">'+
+                                                            '<img class="img-size" src="'+dt.images[2]+'" alt="" width="33.3%" height="120px" style="border-radius:0px 10px 10px 0px">'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'
+                                            )
+                                        }
+                                    });
+                                })
+                            });
+                        });
+                </script>
+                <!-- <div class="card m-4">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">name restaurant</h5>
+                        <p class="card-text float-start"> <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.83334 9.16675H7.50001V10.8334H5.83334V9.16675ZM5.83334 12.5001H7.50001V14.1667H5.83334V12.5001ZM9.16668 9.16675H10.8333V10.8334H9.16668V9.16675ZM9.16668 12.5001H10.8333V14.1667H9.16668V12.5001ZM12.5 9.16675H14.1667V10.8334H12.5V9.16675ZM12.5 12.5001H14.1667V14.1667H12.5V12.5001Z" fill="black"/>
+                            <path d="M4.16667 18.3334H15.8333C16.7525 18.3334 17.5 17.5859 17.5 16.6667V5.00008C17.5 4.08091 16.7525 3.33341 15.8333 3.33341H14.1667V1.66675H12.5V3.33341H7.5V1.66675H5.83333V3.33341H4.16667C3.2475 3.33341 2.5 4.08091 2.5 5.00008V16.6667C2.5 17.5859 3.2475 18.3334 4.16667 18.3334ZM15.8333 6.66675L15.8342 16.6667H4.16667V6.66675H15.8333Z" fill="black"/>
+                            </svg>10:00 AM - 6:00 PM</p>
+                        <p class="card-text float-end"> <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="5.5" cy="5.5" r="5.5" fill="#134B8A"/>
+                                </svg> 4.5</p>
+                    </div>
+                    <div class=" d-flex justify-content-center">
+
+                        <img src="img/food_1.png" alt="">
+                        <img src="img/food_2.png" alt="">
+                        <img src="img/food_3.png" alt="">
+
+
+                    </div>
+                </div> -->
+            <!-- </div> -->
+        </div>
+        <div class="row" id="result">
+            
+        </div>
+        
+
+
+
+
+    </div>
+
+
+    <script>
+        
+    </script>
+
+
+
+
+
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
